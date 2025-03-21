@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Iniciar sesión</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f7f8fc, #ffffff);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Idioma */
+        .language {
+            color: #606770;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Logo de Facebook */
+        .logo {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+
+        /* Campos de entrada */
+        .input-box {
+            width: 92%;
+            max-width: 320px;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccd0d5;
+            border-radius: 12px;
+            font-size: 16px;
+            background: white;
+            outline: none;
+        }
+
+        /* Botón de inicio de sesión */
+        .login-button {
+            width: 92%;
+            max-width: 700px;
+            padding: 12px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-button:hover {
+            background-color: #1558b0;
+        }
+
+        /* Enlace de recuperación de contraseña */
+        .forgot-password {
+            display: block;
+            margin: 12px 0;
+            color: black;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Botón de crear cuenta */
+        .create-account {
+            width: 92%;
+            max-width: 300px;
+            padding: 12px;
+            border: 1px solid #1877f2;
+            background-color: white;
+            color: #1877f2;
+            font-weight: bold;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .create-account:hover {
+            background-color: #f0f2f5;
+        }
+
+        /* Sección de Meta */
+        .meta-section {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            color: #606770;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .meta-icon {
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        /* Pie de página */
+        .footer {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #606770;
+        }
+        .footer a {
+            color: #606770;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Idioma -->
+    <p class="language">Español</p>
+
+    <!-- Logo de Facebook -->
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+
+    <!-- Campos de entrada -->
+    <input type="text" class="input-box" placeholder="Celular o correo electrónico">
+    <input type="password" class="input-box" placeholder="Contraseña">
+
+    <!-- Botón de inicio de sesión -->
+    <button class="login-button">Iniciar sesión</button>
+
+    <!-- Enlace de recuperación de contraseña -->
+    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+
+    <!-- Botón de crear cuenta -->
+    <button class="create-account">Crear cuenta nueva</button>
+
+    <!-- Sección de Meta con el icono -->
+    <div class="meta-section">
+        <img class="meta-icon" src="https://img.icons8.com/ios-filled/50/606770/meta.png" alt="Meta Icon">
+        <span>Meta</span>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="footer">
+        <a href="#">Información</a> 
+        <a href="#">Ayuda</a> 
+        <a href="#">Más</a>
+    </div>
+
+</body>
+</html>
