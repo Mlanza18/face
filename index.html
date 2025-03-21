@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
 
-        /* Configuración del cuerpo para centrar y cubrir toda la pantalla */
+        /* Configuración del cuerpo para cubrir toda la pantalla */
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #f7f8fc, #ffffff);
@@ -20,17 +20,11 @@
             width: 100vw;  /* Ocupa todo el ancho */
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centrar verticalmente */
-            align-items: center; /* Centrar horizontalmente */
+            justify-content: center; /* Centra el contenido */
+            align-items: center;
             text-align: center;
+            position: relative;
             overflow: hidden; /* Evitar scroll */
-        }
-
-        /* Idioma */
-        .language {
-            color: #606770;
-            font-size: 14px;
-            margin-bottom: 10px;
         }
 
         /* Logo de Facebook */
@@ -39,10 +33,13 @@
             margin-bottom: 20px;
         }
 
-        /* Contenedor de los elementos */
+        /* Contenedor principal */
         .container {
             width: 90%;
-            max-width: 360px; /* Mantener un tamaño ideal */
+            max-width: 360px; /* Ancho fijo en móviles */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%); /* Centrado vertical */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -73,9 +70,6 @@
             cursor: pointer;
             margin-top: 10px;
         }
-        .login-button:hover {
-            background-color: #1558b0;
-        }
 
         /* Enlace de recuperación de contraseña */
         .forgot-password {
@@ -84,9 +78,6 @@
             color: black;
             text-decoration: none;
             font-size: 14px;
-        }
-        .forgot-password:hover {
-            text-decoration: underline;
         }
 
         /* Botón de crear cuenta */
@@ -102,9 +93,6 @@
             cursor: pointer;
             margin-top: 10px;
         }
-        .create-account:hover {
-            background-color: #f0f2f5;
-        }
 
         /* Sección de Meta */
         .meta-section {
@@ -115,6 +103,8 @@
             color: #606770;
             font-size: 14px;
             font-weight: bold;
+            position: absolute;
+            bottom: 50px;
         }
 
         .meta-icon {
@@ -131,20 +121,9 @@
             text-align: center;
             width: 100%;
         }
-        .footer a {
-            color: #606770;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
-
-    <!-- Idioma -->
-    <p class="language">Español</p>
 
     <!-- Logo de Facebook -->
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
@@ -173,8 +152,8 @@
 
     <!-- Pie de página -->
     <div class="footer">
-        <a href="#">Información</a> 
-        <a href="#">Ayuda</a> 
+        <a href="#">Información</a> |
+        <a href="#">Ayuda</a> |
         <a href="#">Más</a>
     </div>
 
